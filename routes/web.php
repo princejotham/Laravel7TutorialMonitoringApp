@@ -57,6 +57,15 @@ Route::get('branch', function () {
     return view('admin.branch');
 });
 
+Route::get('branchlist', function () {
+    return datatables()->of(\DB::table('branches')->select('*'))
+        ->make(true);
+})->name('branchlist');
+
+Route::get('memberlist', function () {
+    return datatables()->of(\DB::table('members')->select('*'))
+        ->make(true);
+})->name('memberlist');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
